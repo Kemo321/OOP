@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
-#include "Product.h"
+#include "Product.hpp"
 
 
 
 class Recipe
 {
+	std::string filename;
 	std::string name;
 	std::vector<std::string> steps;
 	std::vector<std::pair<Product, int>> product_list;
@@ -26,6 +27,8 @@ public:
 	std::string get_product_list() const;
 
 	std::string get_difficulty() const;
+	
+	std::string get_filename() const;
 
 	int calculate_calories() const;
 
@@ -34,5 +37,12 @@ public:
 	int get_prepare_time() const;
 
 	friend class Product;
-};
 
+	friend std::ostream& operator<<(std::ostream& os, const Recipe& recipe);
+
+	friend std::istream& operator>>(std::istream& is, Recipe& recipe);
+
+	bool operator==(const Recipe& other) const;
+
+	bool operator!=(const Recipe& other) const;
+};

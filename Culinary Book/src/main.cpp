@@ -1,7 +1,6 @@
-﻿#include <iostream>
+#include <iostream>
 #include <stdlib.h>
-
-#include "Book.h"
+#include "Book.hpp"
 
 int main()
 {
@@ -22,4 +21,3 @@ int main()
 		recipe_book.show_recipe(std::stoi(chosen_recipe));
 	}
 }
-

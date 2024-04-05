@@ -1,15 +1,14 @@
 #include <fstream>
 #include <iostream>
-
-#include "Book.h"
+#include "Book.hpp"
 
 Book::Book(const std::string recipes_filename)
 {
+	this->filename = recipes_filename;
 	std::ifstream read(recipes_filename);
 	std::string number_of_recipes;
 	std::getline(read, number_of_recipes);
 	int number_of_recipes_int = std::stoi(number_of_recipes);
-	
 	for (int i = 0; i < number_of_recipes_int; i++)
 	{
 		std::string recipe_name;
@@ -18,6 +17,11 @@ Book::Book(const std::string recipes_filename)
 	}
 	read.close();
 };
+
+std::string Book::get_filename() const
+{
+	return this->filename;
+}
 
 void Book::show_recipes_list() const
 {
@@ -44,4 +48,14 @@ void Book::show_recipe(int recipe_number) const
 std::vector<Recipe> Book::get_list_of_recipes() const
 {
 	return this->list_of_recipes;
+}
+
+bool Book::operator==(const Book& other) const
+{
+	return (this->filename == other.get_filename());
+}
+
+bool Book::operator!=(const Book& other) const
+{
+	return !(*this == other);
 }

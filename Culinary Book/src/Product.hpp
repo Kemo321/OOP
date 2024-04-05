@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 
 class Product
@@ -17,5 +18,13 @@ public:
 	std::string get_name() const;
 
 	friend class Recipe;
-};
 
+	friend std::ostream& operator<<(std::ostream& os, const Product& product);
+
+    friend std::istream& operator>>(std::istream& is, Product& product);
+
+	bool operator==(const Product& other) const;
+
+	bool operator!=(const Product& other) const;
+
+};
