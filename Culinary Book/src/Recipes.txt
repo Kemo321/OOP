@@ -1,0 +1,60 @@
+3
+Chicken Soup
+8
+Chop the vegetables into squares.
+Heat up the pan with the oil.
+Add the vegetables and fry for a few minutes.
+Add the meat and fry until it gets golden.
+Pour the water into the pot.
+Add some salt pepper and parsley.
+Boil for 5 hours while removing the solid fat gathering at the top.
+Serve with pasta or use as a base for another dishes.
+8
+Carrot 100 1
+Celery 100 1
+Onion 100 1
+Chicken_wings 500 3
+Oil 50 8
+Salt 15 1
+Pepper 25 1
+Parsley 10 1
+360
+0
+8
+Pizza
+5
+Mix all the ingredients in a bowl.
+Leave the dough in a fridge for 12 hours.
+Stretch the dough to achieve desired shape.
+Add your favourite toppings.
+Bake in the oven at 250C for 10 minutes.
+5
+Yeast 5 1
+Water 400 0
+Flour 500 4
+Olive_Oil 15 8
+Salt 1 5
+780
+0
+3
+Spaghetti
+7
+Chop the onions celery and carrot.
+Fry them with the olive oil.
+Add the meat and cook for 5 minutes.
+Add the stock and cook until it starts to boil
+Add the wine and cook until it evaporates.
+Add the passata and cook for 1.5 hours.
+Serve with your favourite pasta and parmesan cheese.
+8
+Carrot 100 1
+Celery 100 1
+Onion 100 1
+Beef/Beef&Pork 400 3
+Chicken_or_Beef_stock 200 2
+Dry_red_wine 150 2
+Olive_oil 50 8
+Tomato_passata 400 1
+120
+1
+4

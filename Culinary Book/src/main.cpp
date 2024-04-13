@@ -4,18 +4,24 @@
 
 int main()
 {
-	Book recipe_book = Book();
+	std::ifstream is("Recipes.txt");
+	Book recipe_book = Book(is);
 	std::string chosen_recipe;
 	while(true)
 	{
-		std::cout << "0. Exit\n";
-		recipe_book.show_recipes_list();
+		std::cout << recipe_book;
+		std::cout << "Type 'q' to change unit" << std::endl;
 		std::cout << "Choose a recipe from the list:" << std::endl;
 		std::cin >> chosen_recipe;
 		std::cout << std::endl;
-		system("CLS");
 		if (chosen_recipe == "0")
 			break;
+		if (chosen_recipe == "q")
+		{
+			recipe_book.change_unit();
+			system("CLS");
+			continue;
+		}
 		int recipe_index = std::stoi(chosen_recipe);
 		system("CLS");
 		recipe_book.show_recipe(std::stoi(chosen_recipe));

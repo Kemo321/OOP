@@ -1,4 +1,0 @@
-3
-../recipes/Pizza.txt
-../recipes/Spaghetti.txt
-../recipes/Chicken_Soup.txt

@@ -1,22 +1,31 @@
 #include "Product.hpp"
+#include <sstream>
 
-Product::Product(const std::string name, const int calories)
+Product::Product(std::string content)
 {
-    this->name = name;
-    if (calories >= 0)
-        this->calories_per_gram = calories;
-    else
-        throw std::invalid_argument("Calories cannot be negative");
+    std::istringstream iss(content);
+    iss >> this->name >> this->grams_str >> this->calories_per_gram_str;
+    if (std::stoi(this->grams_str) <= 0 || std::stoi(this->calories_per_gram_str) < 0)
+    {
+        throw std::invalid_argument("Incorrect product data");
+    }
+    this->calories_per_gram = std::stoi(calories_per_gram_str);
+    this->grams = std::stoi(grams_str);
 }
 
-int Product::calculate_calories(const int amount) const
+int Product::calculate_calories() const
 {
-	return int(amount * this->calories_per_gram);
+	return int(this->grams * this->calories_per_gram);
 }
 
 int Product::get_calories_per_gram() const
 {
 	return this->calories_per_gram;
+}
+
+int Product::get_grammature() const
+{
+    return this->grams;
 }
 
 std::string Product::get_name() const
@@ -26,22 +35,24 @@ std::string Product::get_name() const
 
 std::ostream& operator<<(std::ostream& os, const Product& product) 
 {
-    os << "Name: " << product.name << ", Calories per gram: " << product.calories_per_gram;
+    if (product.kilograms)
+        os << "Ingredient: " << product.name <<" Kilograms: " << float(product.grams) / 1000 << " Calories per kilogram: " << float(product.calories_per_gram) / 1000 << std::endl;
+    else
+        os << "Ingredient: " << product.name <<" Grams: " << product.grams << " Calories per gram: " << product.calories_per_gram << std::endl;
     return os;
 }
 
-std::istream& operator>>(std::istream& is, Product& product) 
+std::istringstream& operator>>(std::istringstream& is, Product& product) 
 {
-    std::cout << "Enter name: ";
-    is >> product.name;
-    std::cout << "Enter calories per gram: ";
-    is >> product.calories_per_gram;
+    is >> product.name >> product.grams_str >> product.calories_per_gram_str;
+    product.grams = std::stoi(product.grams_str);
+    product.calories_per_gram = std::stoi(product.calories_per_gram_str);
     return is;
 }
 
 bool Product::operator==(const Product& other) const
 {
-	return (other.get_name() == this->name && other.get_calories_per_gram() == this->calories_per_gram);
+	return (other.get_name() == this->name && other.get_calories_per_gram() == this->calories_per_gram && this->grams == other.get_grammature());
 }
 
 bool Product::operator!=(const Product& other) const

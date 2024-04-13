@@ -1,34 +1,33 @@
 #pragma once
 #include <vector>
 #include "Product.hpp"
+#include "Recipe.hpp"
+#include <fstream>
+#include "Product.hpp"
+#include <filesystem>
+
 
 
 
 class Recipe
 {
-	std::string filename;
+protected:
 	std::string name;
 	std::vector<std::string> steps;
-	std::vector<std::pair<Product, int>> product_list;
+	std::vector<Product> product_list;
 	int prepare_time;
 	int difficulty;
 	int portions;
 
 public:
 
-	Recipe(const std::string filename);
+	Recipe(std::ifstream& pointer);
 
-	std::vector<std::pair<Product, int>> get_product_list_vector() const;
-
-	std::string get_steps() const;
+	std::vector<Product> get_product_list_vector() const;
 
 	std::string get_name() const;
 
-	std::string get_product_list() const;
-
 	std::string get_difficulty() const;
-	
-	std::string get_filename() const;
 
 	int calculate_calories() const;
 
@@ -38,9 +37,11 @@ public:
 
 	friend class Product;
 
+	friend class Book;
+
 	friend std::ostream& operator<<(std::ostream& os, const Recipe& recipe);
 
-	friend std::istream& operator>>(std::istream& is, Recipe& recipe);
+	friend std::ifstream& operator>>(std::ifstream& pointer, Recipe& recipe);
 
 	bool operator==(const Recipe& other) const;
 
